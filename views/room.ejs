@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      const ROOM_ID = "<%= roomId %>";
+      const TEACHER_ID = "<%= teacher_id %>";
+      const START_DATE = "<%= start_date %>";
+      const STARTS_DATE = "<%= starts_date %>";
+      const TIMES = "<%= times %>";
+    </script>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js" defer></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+
+    <script src="script.js" defer></script>
+    <script src="roomId.js" defer></script>
+    <script src="roomId1.js" defer></script>
+    
+    <title>Video Chat Room</title>
+  </head>
+  <body>
+
+    <div class="container-fluid nopadding" style="height: 100vh;">
+      <div class="nav"><p id="countdown" style="font-size: 25px;"></p><p id="count" style="font-size: 25px;"></p></div> 
+        <div class="col-xs-12 col-md-8 nopadding aa">
+          <div id="hostVideoGrid"></div>
+          <div id="joinVideoGrid"></div>
+          <div id="newVideoGrid"></div>
+          <div class="mobile-margin"></div>
+        </div>
+        <div class="col-xs-12 col-md-4 nopadding bb">
+          <div id="conNewVideoGrid"></div>
+        </div>
+    </div>
+  </body>
+</html>

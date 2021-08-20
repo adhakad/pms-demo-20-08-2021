@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+var app = require('../app');
+var server = require('http').Server(app);
+const { v4: uuidV4 } = require("uuid");
+var io = require('socket.io')(server)
+var { ExpressPeerServer } = require('peer');
+var peerServer = ExpressPeerServer(server, {
+  debug: true
+});
+app.use('/peerjs', peerServer);
+
+io.on("connection", (socket) => {
+  socket.on("join-room", (roomId, { id, name = uuidV4() } ) => {
+    socket.join(roomId);
+    io.to(roomId).emit("user-connected", { id, name });
+    socket.on("disconnect", () => {
+      io.to(roomId).emit("user-disconnected", { id, name });
+    });
+  });
+});
+
+server.listen(process.env.PORT||2000)
